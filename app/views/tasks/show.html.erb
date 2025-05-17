@@ -1,0 +1,35 @@
+<%# <h2><%= @task.title %>
+<%# <p><%= @task.details %>
+<%# <p><%= @task.completed %>
+<%# <%= link_to "Back to list", tasks_path %>
+
+<%# <%= link_to "Edit this task", edit_task_path %>
+<%# <%= link_to "Delete", %>
+  <%# task_path(@task), %>
+  <%# data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<%# %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title"><%= @task.title %></h3>
+          <p class="card-text"><%= @task.details %></p>
+          <p>
+            <span class="badge <%= @task.completed ? 'bg-success' : 'bg-secondary' %>">
+              <%= @task.completed ? 'Completed' : 'Pending' %>
+            </span>
+          </p>
+
+          <div class="d-flex gap-2 mt-4">
+            <%= link_to "Back to List", tasks_path, class: "btn btn-outline-primary" %>
+            <%= link_to "Edit", edit_task_path(@task), class: "btn btn-outline-warning" %>
+            <%= link_to "Delete", task_path(@task),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: "btn btn-outline-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
